@@ -41,7 +41,7 @@
                     hostContext.Configuration.Bind(config);
                     services.AddRabbitMqMetrics(config);
                 })
-                .UseConsoleLifetime();
+                .UseWindowsService();
 
             return hostBuilder;
         }

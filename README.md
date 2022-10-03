@@ -1,3 +1,10 @@
+# Fork of RabbitMQ Azure Application Insights Metrics Collector
+This is a fork of https://github.com/p-schuler/RabbitMQAzureMetrics
+That can run as windows service
+
+To run as window service, build and run this command on server:
+`sc.exe create rabitmqwatcher binPath= "{pathtobinaries}\RabbitMQAzureMetricsRunner.exe"`
+
 # RabbitMQ Azure Application Insights Metrics Collector
 Collects metrics from RabbitMq and publishes them into an App Insight instance on Azure. The metric collector is pulling metrics from a RabbitMQ instance, parses them and publishes them using different custom dimensions. 
 
