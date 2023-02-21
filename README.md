@@ -5,6 +5,11 @@ That can run as windows service
 To run as window service, build and run this command on server:
 `sc.exe create rabitmqwatcher binPath= "{pathtobinaries}\RabbitMQAzureMetricsRunner.exe"`
 
+Data collected:
+Can be specified in appsettings.json
+By defaul only queue data are collected (And only total number of messages) - can be changed here: QueueValueConverter
+If you wan to collect more you can add "exchanges" or "overviews"
+
 # RabbitMQ Azure Application Insights Metrics Collector
 Collects metrics from RabbitMq and publishes them into an App Insight instance on Azure. The metric collector is pulling metrics from a RabbitMQ instance, parses them and publishes them using different custom dimensions. 
 

@@ -25,7 +25,7 @@
 
         private static readonly string[] PathsWithDetailRate = new[]
         {
-            "messages",
+            "messages",/*
             "messages_ready",
             "messages_unacknowledged",
             MessageStats + ".ack",
@@ -34,12 +34,12 @@
             MessageStats + ".get",
             MessageStats + ".get_no_ack",
             MessageStats + ".publish",
-            MessageStats + ".redeliver",
+            MessageStats + ".redeliver",*/
         };
 
         private static readonly string[] StatsDimensionTranslations = new[]
         {
-            "Total number of messages",
+            "Total number of messages",/*
             "Messages ready for delivery",
             "Number of unacknowledged messages",
             "Total number of messages in ack mode", // MessageStats + ".ack",
@@ -48,7 +48,7 @@
             "Messages delivered in ack mode in response to basic.get", // get
             "Messages delivered in no-ack mode in response to basic.get", // get_no_ack
             "Messages published recently", // publish
-            "Count of subset of messages in deliver_get which had the redelivered flag set.", // redliver
+            "Count of subset of messages in deliver_get which had the redelivered flag set.", // redliver*/
         };
 
         private static readonly string[] StatsDimensionRateTranslations = new[]
@@ -88,10 +88,10 @@
             {
                 if (publishedMetrics == null)
                 {
-                    publishedMetrics = new List<string>(StatsDimensionRateTranslations);
-                    publishedMetrics.AddRange(StatsDimensionTranslations);
+                    publishedMetrics = new List<string>();
+                    //publishedMetrics.AddRange(StatsDimensionTranslations);
                     publishedMetrics.AddRange(PathsDimensionTranslations);
-                    publishedMetrics.AddRange(CalculationTranslations);
+                    //publishedMetrics.AddRange(CalculationTranslations);
                 }
 
                 return publishedMetrics;
@@ -111,19 +111,18 @@
                 {
                     var pathValue = PathsWithDetailRate[i];
                     collection.Add(q.ValueFromPath<float?>($"{pathValue}"), StatsDimensionTranslations[i], qName);
-                    collection.Add(q.ValueFromPath<float?>($"{pathValue}{DetailsRateSuffix}"), StatsDimensionRateTranslations[i], qName);
                 }
 
-                for (var i = 0; i < Paths.Length; i++)
+                /*for (var i = 0; i < Paths.Length; i++)
                 {
                     var pathValue = Paths[i];
                     collection.Add(q.ValueFromPath<float?>($"{pathValue}"), PathsDimensionTranslations[i], qName);
-                }
+                }*/
 
-                for (var i = 0; i < Calculations.Length; i++)
+                /*for (var i = 0; i < Calculations.Length; i++)
                 {
                     Calculations[i](q, collection, qName);
-                }
+                }*/
             }
 
             return collection;

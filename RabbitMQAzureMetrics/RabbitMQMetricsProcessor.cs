@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
@@ -112,9 +113,20 @@
 
             var processors = new List<IMetricProcessor>(3);
 
-            processors.Add(queueProcessor);
-            processors.Add(overviewProcessor);
-            processors.Add(exchangeProcessor);
+            if (configuration.CollectedMetrics.Contains("queues"))
+            {
+                processors.Add(queueProcessor);
+            }
+
+            if (configuration.CollectedMetrics.Contains("overviews"))
+            {
+                processors.Add(overviewProcessor);
+            }
+
+            if (configuration.CollectedMetrics.Contains("exchanges"))
+            {
+                processors.Add(exchangeProcessor);
+            }
 
             return processors;
         }

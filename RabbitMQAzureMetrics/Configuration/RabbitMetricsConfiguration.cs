@@ -20,6 +20,8 @@
 
         public string AppInsightsKey { get; set; }
 
+        public string[] CollectedMetrics { get; set; } = new string[] { "queues" };
+
         internal void Validate()
         {
             if (string.IsNullOrWhiteSpace(this.RabbitMqUserName))
